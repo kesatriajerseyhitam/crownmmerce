@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-import './sign-in.style.scss'
+import './sign-up.style.scss'
 
 import FormInput from './../form-input/form-input.component';
 import CustomButton from './../custom-button/custom-button.component';
 
-export default class SignIn extends Component {
+export default class SignUp extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      confirmPassword: '',
+      displayName: '',
       email: '',
       password: ''
     }
@@ -17,6 +19,8 @@ export default class SignIn extends Component {
   handleSubmit = event => {
     event.preventDefault();
     this.setState({
+      confirmPassword: '',
+      displayName: '',
       email: '',
       password: ''
     })
@@ -29,11 +33,19 @@ export default class SignIn extends Component {
 
   render() {
     return (
-      <div className="sign-in">
-        <h2>I already have an account</h2>
-        <span>Sign in with your email and password</span>
+      <div className="sign-up">
+        <h2>I don't have an account</h2>
+        <span>Sign up with your email and password</span>
 
         <form onSubmit={ this.handleSubmit }>
+          <FormInput name='display-name' 
+            label="Display Name"
+            type="string"
+            value={ this.state.displayName }
+            handleChange={ this.handleChange }
+            required
+          />
+
           <FormInput name='email' 
             label="Email"
             type="email"
@@ -50,9 +62,15 @@ export default class SignIn extends Component {
             required
           />
 
+          <FormInput name='confirm-password' 
+            label="Confirm Password"
+            type="password"
+            value={ this.state.confirmPassword }
+            handleChange={ this.handleChange }
+            required
+          />
 
           <CustomButton type="submit">Sign In</CustomButton>
-          <CustomButton type="submit">Sign In With Google</CustomButton>
         </form>
       </div>
     )
