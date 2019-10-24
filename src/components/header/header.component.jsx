@@ -4,7 +4,9 @@ import './header.style.scss';
 import { Link } from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 
-const Header = () => {
+const Header = ({ currentUser }) => {
+  console.log(currentUser);
+  
   return (
     <div className='header'>
       <Link className="logo-container" to="/">
@@ -17,9 +19,16 @@ const Header = () => {
         <Link className="option" to="/contact">
           CONTACT
         </Link>
-        <Link className="option" to="/sign-in">
-          SIGN IN
-        </Link>
+        {
+          currentUser ?
+          <div className="option">
+            SIGN OUT
+          </div>
+          :
+          <Link className="option" to="/sign-in">
+            SIGN IN
+          </Link>
+        }
       </div>
     </div>
   )
