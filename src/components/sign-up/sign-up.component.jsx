@@ -4,6 +4,8 @@ import './sign-up.style.scss'
 import FormInput from './../form-input/form-input.component';
 import CustomButton from './../custom-button/custom-button.component';
 
+import { auth, createUserProfileDocument } from './../../firebase/firebase.utils';
+
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -16,8 +18,28 @@ export default class SignUp extends Component {
     }
   }
 
-  handleSubmit = event => {
-    event.preventDefault();
+  handleSubmit = async event => {
+    event.preventDefault()
+    const { displayName, email, password, confirmPassword } = this.state;
+
+    if(password !== confirmPassword) {
+      alert(`Password don't match`);
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email, password);
+      await createUserProfileDocument(user, { displayName });
+      this.setState({
+        confirmPassword: '',
+        displayName: '',
+        email: '',
+        password: '',
+      })
+     } catch(error) {
+
+    }
+
     this.setState({
       confirmPassword: '',
       displayName: '',
