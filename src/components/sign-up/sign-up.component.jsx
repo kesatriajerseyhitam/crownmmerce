@@ -36,16 +36,9 @@ export default class SignUp extends Component {
         email: '',
         password: '',
       })
-     } catch(error) {
-
+    } catch(error) {
+      console.log(error);
     }
-
-    this.setState({
-      confirmPassword: '',
-      displayName: '',
-      email: '',
-      password: ''
-    })
   }
 
   handleChange = event => {
@@ -60,7 +53,7 @@ export default class SignUp extends Component {
         <span>Sign up with your email and password</span>
 
         <form onSubmit={ this.handleSubmit }>
-          <FormInput name='display-name' 
+          <FormInput name='displayName' 
             label="Display Name"
             type="string"
             value={ this.state.displayName }
@@ -84,7 +77,7 @@ export default class SignUp extends Component {
             required
           />
 
-          <FormInput name='confirm-password' 
+          <FormInput name='confirmPassword' 
             label="Confirm Password"
             type="password"
             value={ this.state.confirmPassword }
