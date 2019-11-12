@@ -1,7 +1,7 @@
 import React from 'react'
 import './checkout.style.scss'
 
-import { CheckoutItem } from '../../components/checkout-item/checkout-item.component';
+import CheckoutItem from './../../components/checkout-item/checkout-item.component';
 
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
