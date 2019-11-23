@@ -18,7 +18,6 @@ export default class SignIn extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-
     const { email, password } = this.state;
 
     try {
@@ -27,9 +26,7 @@ export default class SignIn extends Component {
         email: '',
         password: ''
       })
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) { console.log(error); }
 
   }
 
@@ -62,11 +59,14 @@ export default class SignIn extends Component {
           />
 
 
-          <CustomButton type="submit">Sign In</CustomButton>
-          <CustomButton 
-            isGoogleButton
-            onClick={ signInWithGoogle }
-          >Sign In With Google</CustomButton>
+          <div className="button-container">
+            <CustomButton type="submit">Sign In</CustomButton>
+            <CustomButton 
+              isGoogleButton
+              onClick={ signInWithGoogle }
+              style={{marginTop: '10px'}}
+            >Sign In With Google</CustomButton>
+          </div>
         </form>
       </div>
     )
