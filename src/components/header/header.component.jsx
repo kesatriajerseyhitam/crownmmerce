@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv } from './header.style';
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink, OptionDiv } from './header.styles';
 
 import { ReactComponent as Logo } from '../../assets/crown.svg';
 import { connect } from 'react-redux';
@@ -9,8 +9,8 @@ import { createStructuredSelector } from 'reselect';
 
 import CartIcon from './../cart-icon/cart-icon.component';
 import CartDropdown from './../cart-dropdown/cart-dropdown.component';
-import { selectCartHidden } from '../../redux/cart/cart.selector';
-import { selectCurrentUser } from './../../redux/user/user.selector';
+import { selectCartHidden } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from './../../redux/user/user.selectors';
 
 const Header = ({ currentUser, hidden }) => {
   return (

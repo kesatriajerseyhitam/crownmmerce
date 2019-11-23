@@ -3,7 +3,7 @@ import './collection-overview.style.scss';
 
 import CollectionPreview from './../collection-preview/collection-preview.component';
 
-import { selectShopForPreview } from './../../redux/shop/shop.selector';
+import { selectShopForPreview } from '../../redux/shop/shop.selectors';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
