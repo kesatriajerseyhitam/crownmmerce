@@ -13,12 +13,25 @@ export const googleSignInStart = () => ({
   type: UserActionTypes.GOOGLE_SIGN_IN_START
 })
 
-export const SignInFailure = (error) => ({
+export const signInFailure = (error) => ({
   type: UserActionTypes.SIGN_IN_FAILURE,
   payload: error
 })
 
-export const SignInSuccess = (user) => ({
+export const signInSuccess = (user) => ({
   type: UserActionTypes.SIGN_IN_SUCCESS,
   payload: user
+})
+
+export const signOutFailure = () => ({
+  type: UserActionTypes.SIGN_OUT_FAILURE
+})
+
+export const signOutStart = () => ({
+  type: UserActionTypes.SIGN_OUT_START
+})
+
+export const signOutSuccess = (error) => ({
+  type: UserActionTypes.SIGN_OUT_SUCCESS,
+  payload: error
 })
