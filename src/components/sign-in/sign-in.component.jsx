@@ -14,7 +14,7 @@ import {
   SignInTitle,
 } from './sign-in.styles';
 
-const SignIn = (emailSignInStart, googleSignInStart) => {
+const SignIn = ({ emailSignInStart, googleSignInStart }) => {
   const [ userCredentials, setUserCredentials ] = useState({
     email: '',
     password: '',
