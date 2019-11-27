@@ -1,29 +1,29 @@
-import React from 'react'
-import StripeCheckout from 'react-stripe-checkout'
+import React from 'react';
+import StripeCheckout from 'react-stripe-checkout';
 
 const StripeCheckoutButton = ({ price }) => {
   const priceForStripe = price * 100;
-  const publishableKey =  `pk_test_TiNCBGdAtpGwT4d2HJL3voFe00AkikFuIN`
+  const publishableKey = 'pk_test_WBqax2FWVzS9QlpJScO07iuL';
 
   const onToken = token => {
     console.log(token);
-    alert(`Payment successfull`);
-  }
-  
-  return (
-    <StripeCheckout 
-      amount={priceForStripe}
-      billingAddress
-      description={`Your total is $${price}`}
-      image='https://svgshare.com/i/CUz.svg'
-      label='Pay Now'
-      name='Crownmerce Clothing Ltd.'
-      panelLabel='Pay Now'
-      shippingAddress
-      stripeKey={publishableKey}
-      token={onToken}
-    />
-  )
-}
+    alert('Payment Succesful!');
+  };
 
-export default StripeCheckoutButton
+  return (
+    <StripeCheckout
+      label='Pay Now'
+      name='CRWN Clothing Ltd.'
+      billingAddress
+      shippingAddress
+      image='https://svgshare.com/i/CUz.svg'
+      description={`Your total is $${price}`}
+      amount={priceForStripe}
+      panelLabel='Pay Now'
+      token={onToken}
+      stripeKey={publishableKey}
+    />
+  );
+};
+
+export default StripeCheckoutButton;
