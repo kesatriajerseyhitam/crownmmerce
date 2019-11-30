@@ -1,6 +1,5 @@
-## Lesson-30
-
-In this lesson we are doing a large refactor! We need to convert all our sign in, sign up and authentication persistence checks into sagas. We don't necessarily need to do this for our application, but this is a good way to practice writing sagas in a real world application that may not leverage firebase/firestore or the observer pattern.
+# react-context-lesson
+We are going to replace our local state management from redux to the new context API. This repository is our application before we introduced sagas to handle our asynchronous code, which is a good starting point to make the appropriate changes!
 
 # How to fork and clone
 
