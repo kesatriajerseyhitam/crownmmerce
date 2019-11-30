@@ -1,19 +1,19 @@
-import React, { useContext, useState } from 'react';
-import './header.styles.scss';
-
-import CartContext from '../../context/cart/cart.context';
-import CartDropdown from '../cart-dropdown/cart-dropdown.component';
-import CartIcon from '../cart-icon/cart-icon.component';
-import CurrentUserContext from '../../context/current-user/current-user.context';
-
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as Logo } from '../../assets/crown.svg';
+
 import { auth } from '../../firebase/firebase.utils';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
+import CurrentUserContext from '../../contexts/current-user/current-user.context';
+import { CartContext } from '../../providers/cart/cart.provider';
+
+import { ReactComponent as Logo } from '../../assets/crown.svg';
+
+import './header.styles.scss';
 
 const Header = () => {
   const currentUser = useContext(CurrentUserContext);
-  const [hidden, setHidden] = useState(true);
-  const toggleHidden = () => setHidden(!hidden);
+  const { hidden } = useContext(CartContext);
 
   return (
     <div className='header'>
@@ -27,7 +27,7 @@ const Header = () => {
         <Link className='option' to='/shop'>
           CONTACT
         </Link>
-        { currentUser ? (
+        {currentUser ? (
           <div className='option' onClick={() => auth.signOut()}>
             SIGN OUT
           </div>
@@ -36,16 +36,11 @@ const Header = () => {
             SIGN IN
           </Link>
         )}
-        <CartContext.Provider value={{
-          hidden, 
-          toggleHidden,
-        }}>
-          <CartIcon />
-        </CartContext.Provider>
+        <CartIcon />
       </div>
       {hidden ? null : <CartDropdown />}
     </div>
   );
-}
+};
 
 export default Header;

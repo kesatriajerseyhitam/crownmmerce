@@ -1,25 +1,28 @@
 import React from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+
 import './App.css';
 
-import CheckoutPage from './pages/checkout/checkout.component';
-import CurrentUserContext from './context/current-user/current-user.context';
-import Header from './components/header/header.component';
 import HomePage from './pages/homepage/homepage.component';
 import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
+import CheckoutPage from './pages/checkout/checkout.component';
 
-import { Switch, Route, Redirect } from 'react-router-dom';
+import Header from './components/header/header.component';
+
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
+import CurrentUserContext from './contexts/current-user/current-user.context';
+
 class App extends React.Component {
-  constructor(){
+  constructor() {
     super();
 
     this.state = {
       currentUser: null
-    }
+    };
   }
-  
+
   unsubscribeFromAuth = null;
 
   componentDidMount() {
@@ -32,12 +35,12 @@ class App extends React.Component {
             currentUser: {
               id: snapShot.id,
               ...snapShot.data()
-          }
+            }
           });
         });
       }
 
-      this.setState({currentUser: userAuth});
+      this.setState({ currentUser: userAuth });
     });
   }
 
@@ -48,7 +51,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <CurrentUserContext.Provider value={ this.state.currentUser }>
+        <CurrentUserContext.Provider value={this.state.currentUser}>
           <Header />
         </CurrentUserContext.Provider>
         <Switch>
