@@ -10,8 +10,8 @@ import CollectionPageContainer from '../collection/collection.container';
 const ShopPage = ({ fetchCollectionsStart, match }) => {
   useEffect(() => {
     fetchCollectionsStart();
-  }, [fetchCollectionsStart])
-  
+  }, [fetchCollectionsStart]);
+
   return (
     <div className='shop-page'>
       <Route
@@ -25,7 +25,7 @@ const ShopPage = ({ fetchCollectionsStart, match }) => {
       />
     </div>
   );
-}
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchCollectionsStart: () => dispatch(fetchCollectionsStart())
