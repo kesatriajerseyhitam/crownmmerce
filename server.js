@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('comporession');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -12,7 +13,7 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(compression());
 app.use(cors());
 
 if (process.env.NODE_ENV === 'production') {
